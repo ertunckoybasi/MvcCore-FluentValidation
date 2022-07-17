@@ -21,7 +21,10 @@ namespace MvcCore_FluentValidation.Models
 
             RuleFor(x => x.Country).NotEmpty().WithMessage("Please specify a {PropertyName}");
 
-            RuleFor(x => x.Age).InclusiveBetween(18, 65).WithMessage("{PropertyName} must be between 18-65");
+            RuleFor(x => x.Age).NotNull().WithMessage("Please specify a {PropertyName}")
+                .InclusiveBetween(18, 65).WithMessage("{PropertyName} must be between 18-65");
+
+            RuleFor(x => x.Salary).NotNull().WithMessage("Please specify a {PropertyName}");
 
             RuleFor(p => p.Phone)
                    .NotEmpty()
